@@ -15,6 +15,9 @@ Feel free to fork and make a pull request.
 
 ### Running Locally
 Lunch Picker requires [Node.js](https://nodejs.org/) v6+ to run.
+You will also want to create a MongoDB with [MLAB](https://mlab.com/) to associate.
+Plug in your MongoURL into lunch.js
+
 Install the dependencies and devDependencies and start the server..
 
 ```sh
