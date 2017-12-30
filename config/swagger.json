@@ -1,0 +1,54 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Lunch Picker",
+        "description": "A Lunch Picker API based on Swagger and built using Node.js"
+    },
+    "paths": {
+        "/lunch": {
+            "post": {
+                "tags": [
+                    "Lunch"
+                ],
+                "operationId": "lunch_post",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Lunch"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Lunch": {
+            "type": "object",
+            "properties": {
+                "color": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "notify": {
+                    "type": "boolean"
+                },
+                "message_format": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
