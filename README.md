@@ -13,7 +13,7 @@ Feel free to fork and make a pull request.
 
 ### Running Locally
 Lunch Picker requires [Node.js](https://nodejs.org/) v6+ to run.
-Install the dependencies and devDependencies and start the server.
+Install the dependencies and devDependencies and start the server..
 
 ```sh
 $ cd mindshaverApi
