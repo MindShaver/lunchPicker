@@ -44,8 +44,9 @@ Use PostMan to make a POST request.
 ### Parameters : 
 - add {Restaurant Name}
 - count
+- list
 
 ### Todos
  - Have a DELETE to get rid of places to eat
- - Have a GET to return all places to eat
+ - ~~Have a way to return all places to eat~~
  - ~~Move mongodb dependency into a module to be used with more handlers~~
