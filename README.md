@@ -16,7 +16,7 @@ Feel free to fork and make a pull request.
 ### Running Locally
 Lunch Picker requires [Node.js](https://nodejs.org/) v6+ to run.
 You will also want to create a MongoDB with [MLAB](https://mlab.com/) to associate.
-Plug in your MongoURL into lunch.js
+Plug in your MongoURL into the connect method in server.js and your database name in mongo-connect.js
 
 Install the dependencies and devDependencies and start the server..
 
@@ -48,4 +48,4 @@ Use PostMan to make a POST request.
 ### Todos
  - Have a DELETE to get rid of places to eat
  - Have a GET to return all places to eat
- - Move mongodb dependency into a module to be used with more handlers
+ - ~~Move mongodb dependency into a module to be used with more handlers~~
