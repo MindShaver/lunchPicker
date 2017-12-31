@@ -37,7 +37,7 @@ Use PostMan to make a POST request.
   }
 }
 ```
-- A POST request with no body will retrieve a random place
+- A POST request with just `/lunch` will retrieve a random place
 - A POST requests must be formatted as a HipChat Request
 - A POST request with any other command will return an error
 
