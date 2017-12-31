@@ -4,11 +4,13 @@ This is a command extension to be used with HipChat that picks a lunch based on 
   - Add a place to eat using `/lunch add {name}`
   - Have a random place picked for lunch using `/lunch`
   - See how many places are being chosen from with `/lunch count`
+  - See a list of all places with `/lunch list`
 
 ### New Features!
 
   - The ability to add a place to eat!
   - The ability to see how many places can be chosen from!
+  - The ability to see all places!
 
 Hosted in Azure using Azure CLI.
 Feel free to fork and make a pull request.
