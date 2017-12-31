@@ -29,8 +29,7 @@ app.use('/docs', swaggerUi({
     docs: '/swagger'  
 }))
 
-db.connect(//your mongo url here
-    , function(err){
+db.connect("mongodb://defaultUser:bearbear@ds119718.mlab.com:19718/fcc-db", function(err){
     if (err) {
         console.log('Unable to connect to Mongo.')
         process.exit(1)

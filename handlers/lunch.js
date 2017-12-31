@@ -22,8 +22,7 @@ module.exports = {
                 }
                 res.json(jsonResponse)
             })  
-        }
-        else if(command === "count") {
+        } else if(command === "count") {
             db.get().collection('places').find().toArray(function(err, results){
                 if(err) {
                     return console.log(err)
@@ -41,9 +40,33 @@ module.exports = {
                 res.json(jsonResponse)
 
             })  
+        } else if(command === "list") {
+            db.get().collection('places').find().toArray(function(err, results){
+                if(err) {
+                    return console.log(err)
+                }
+                var names = []
+                
+                for(let i = 0; i < results.length; i++)
+                {
+                    names.push(results[i].name)
+                }
+
+                names.sort();
+
+                var jsonResponse = {
+                    "color": "yellow",
+                    "message": names.join(', \r\n'),
+                    "notify": false,
+                    "message_format": "text"
+                }
+
+                res.json(jsonResponse)
+
+            })  
         } else if (command === "add" && splitMessage.length !== 2) {
             var restaurant = ""
-            for(var i = 2; i < splitMessage.length; i++)
+            for(let i = 2; i < splitMessage.length; i++)
             {
                 restaurant += splitMessage[i] + " "
             }

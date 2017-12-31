@@ -11,7 +11,7 @@ exports.connect = function(url, done) {
     if (err) return done(err)
 
     state.db = client.db(
-        //your mongo database name here
+        "fcc-db"
     )
     done()
   })
