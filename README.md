@@ -5,12 +5,16 @@ This is a command extension to be used with HipChat that picks a lunch based on 
   - Have a random place picked for lunch using `/lunch`
   - See how many places are being chosen from with `/lunch count`
   - See a list of all places with `/lunch list`
+  - Delete all instances of places containing a word with `/lunch delete {name}`
+  - See all avaliable command with `/lunch help`
 
 ### New Features!
 
   - The ability to add a place to eat!
   - The ability to see how many places can be chosen from!
   - The ability to see all places!
+  - The ability to delete places!
+  - The ability to get help!
 
 Hosted in Azure using Azure CLI.
 Feel free to fork and make a pull request.
@@ -47,8 +51,10 @@ Use PostMan to make a POST request.
 - add {Restaurant Name}
 - count
 - list
+- delete {Restaurant Name}
+- help
 
 ### Todos
- - Have a DELETE to get rid of places to eat
+ - ~~Have a DELETE to get rid of places to eat~~
  - ~~Have a way to return all places to eat~~
  - ~~Move mongodb dependency into a module to be used with more handlers~~

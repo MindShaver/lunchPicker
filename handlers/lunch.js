@@ -64,6 +64,45 @@ module.exports = {
                 res.json(jsonResponse)
 
             })  
+        } else if (command === "help") {
+            var jsonResponse = {
+                "color": "green",
+                "message": "Welcome to Lunch Picker! (partyparrot) \r\n The commands we currently support are: \r\n- /lunch \r\n- /lunch add {your restaurant name}\r\n- /lunch list\r\n- /lunch count\r\n- /lunch delete {restaurant name}\r\n- /lunch help\r\nHAPPY LUNCHING!",
+                "notify": false,
+                "message_format": "text"
+            }
+
+            res.json(jsonResponse)
+
+        } else if (command === "delete" && splitMessage.length !== 2) {
+            var restaurantToDelete = ""
+            var deletedCount = 0
+            for(let i = 2; i < splitMessage.length; i++)
+            {
+                restaurantToDelete += splitMessage[i] + " "
+            }
+            
+            db.get().collection('places').deleteMany(
+                {
+                    name: {$regex : restaurantToDelete}
+                },
+                function (err, doc) {
+                    if (err) {
+                    return console.log(err)
+                    }
+
+                    deletedCount = doc.deletedCount === undefined ? 0 : doc.deletedCount
+                })
+
+            var jsonResponse = {
+                "color": "green",
+                "message": deletedCount + " instances of " + restaurantToDelete + "were deleted successfully! (blondesassyparrot)",
+                "notify": false,
+                "message_format": "text"
+            }
+
+            res.json(jsonResponse)
+
         } else if (command === "add" && splitMessage.length !== 2) {
             var restaurant = ""
             for(let i = 2; i < splitMessage.length; i++)
