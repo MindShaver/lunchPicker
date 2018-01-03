@@ -76,38 +76,76 @@ module.exports = {
 
         } else if (command === "delete" && splitMessage.length !== 2) {
             var restaurantToDelete = ""
-            var deletedCount = 0
             for(let i = 2; i < splitMessage.length; i++)
             {
-                restaurantToDelete += splitMessage[i] + " "
-            }
-            
-            db.get().collection('places').deleteMany(
+                if(i != splitMessage.length -1)
                 {
-                    name: {$regex : restaurantToDelete}
-                },
-                function (err, doc) {
-                    if (err) {
-                    return console.log(err)
-                    }
-
-                    deletedCount = doc.deletedCount === undefined ? 0 : doc.deletedCount
-                })
-
-            var jsonResponse = {
-                "color": "green",
-                "message": deletedCount + " instances of " + restaurantToDelete + "were deleted successfully! (blondesassyparrot)",
-                "notify": false,
-                "message_format": "text"
+                    restaurantToDelete += splitMessage[i] + " "
+                }
+                else {
+                    restaurantToDelete += splitMessage[i]
+                }
             }
 
-            res.json(jsonResponse)
+            var query = { name: restaurantToDelete }
+            
+            db.get().collection('places').deleteMany(query, function (err, doc) {
+                if (err) {
+                return console.log(err)
+                }
 
+                if(doc.result.n === 0)
+                {
+                    var jsonResponse = {
+                        "color": "red",
+                        "message": "Could not find " + restaurantToDelete + ". (shrug)",
+                        "notify": false,
+                        "message_format": "text"
+                    }
+                    return res.json(jsonResponse)
+                }
+
+                var jsonResponse = {
+                    "color": "green",
+                    "message": doc.result.n + " instances of " + restaurantToDelete + " were deleted successfully! (blondesassyparrot)",
+                    "notify": false,
+                    "message_format": "text"
+                }
+    
+                res.json(jsonResponse)
+            })
         } else if (command === "add" && splitMessage.length !== 2) {
             var restaurant = ""
             for(let i = 2; i < splitMessage.length; i++)
             {
-                restaurant += splitMessage[i] + " "
+                if(splitMessage[i] === '\\n' || splitMessage[i] === '\\0')
+                {
+                    var jsonResponse = {
+                        "color": "red",
+                        "message": "Please don't add newlines or null characters (sadpanda).",
+                        "notify": false,
+                        "message_format": "text"
+                    }
+                    return res.json(jsonResponse)
+                }
+                else if(splitMessage[i] === "@all")
+                {
+                    var jsonResponse = {
+                        "color": "red",
+                        "message": "Please don't tag everyone (sadpanda).",
+                        "notify": false,
+                        "message_format": "text"
+                    }
+                    return res.json(jsonResponse)
+                }
+
+                if(i != splitMessage.length -1)
+                {
+                    restaurant += splitMessage[i] + " "
+                }
+                else {
+                    restaurant += splitMessage[i]
+                }
             }
             
             db.get().collection('places').insertOne(
@@ -122,7 +160,7 @@ module.exports = {
 
             var jsonResponse = {
                 "color": "green",
-                "message": restaurant + "was added successfully! (dealwithitparrot)",
+                "message": restaurant + " was added successfully! (dealwithitparrot)",
                 "notify": false,
                 "message_format": "text"
             }

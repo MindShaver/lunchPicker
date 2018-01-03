@@ -5,7 +5,7 @@ This is a command extension to be used with HipChat that picks a lunch based on 
   - Have a random place picked for lunch using `/lunch`
   - See how many places are being chosen from with `/lunch count`
   - See a list of all places with `/lunch list`
-  - Delete all instances of places containing a word with `/lunch delete {name}`
+  - Delete all instances of a place with exact name `/lunch delete {name}`
   - See all avaliable command with `/lunch help`
 
 ### New Features!
