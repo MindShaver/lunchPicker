@@ -107,7 +107,7 @@ module.exports = {
 
                 var jsonResponse = {
                     "color": "green",
-                    "message": doc.result.n + " instances of " + restaurantToDelete + " were deleted successfully! (blondesassyparrot)",
+                    "message": doc.result.n + " instance(s) of " + restaurantToDelete + " were deleted successfully! (blondesassyparrot)",
                     "notify": false,
                     "message_format": "text"
                 }
